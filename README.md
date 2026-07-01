@@ -1,43 +1,77 @@
-# Policy Management System
+# 🤖 AI Powered Policy Management System
 
-A full-stack Policy Management System developed using **Spring Boot**, **React**, and **MySQL**. The application allows users to manage customers, create insurance policies, and assign policies to customers through a simple and responsive web interface.
+A full-stack AI Powered Policy Management System developed using **Spring Boot**, **React**, **MySQL**, **Spring AI**, and **Ollama (Llama 3)**. The application enables users to manage customers, create insurance policies, assign policies, and receive AI-powered policy recommendations through an intelligent chatbot.
 
 ---
 
-## Features
+## 🚀 Features
 
-- Customer Management (CRUD)
-- Policy Management (CRUD)
-- Policy Assignment
+### Customer Management
+- Create Customer
+- View Customers
+- Update Customer
+- Delete Customer
+
+### Policy Management
+- Create Insurance Policies
+- Update Policies
+- Delete Policies
+- View Available Policies
+
+### Policy Assignment
+- Assign Policies to Customers
+- View Assigned Policies
+- Update Assignment Status
+- Remove Assignments
+
+### AI Policy Assistant
+- AI-powered chatbot using **Ollama + Llama 3**
+- Recommends suitable insurance policies
+- Answers customer policy-related questions
+- Uses live policy data stored in the MySQL database
+- Personalized insurance recommendations
+
+### Additional Features
 - RESTful APIs
 - Form Validation
 - Global Exception Handling
-- Responsive UI with Bootstrap
+- Responsive Bootstrap UI
 - MySQL Database Integration
+- Clean Layered Architecture
 
 ---
 
-## Tech Stack
+# 🛠 Tech Stack
 
-### Backend
+## Backend
 - Java 21
 - Spring Boot 3
 - Spring Data JPA
 - Spring Web
+- Spring AI
+- Ollama (Llama 3)
 - Hibernate
 - MySQL
 - Lombok
 - Maven
 
-### Frontend
+## Frontend
 - React
 - Vite
 - Axios
 - Bootstrap 5
 
+## Database
+- MySQL
+
+## AI
+- Ollama
+- Llama 3
+- Spring AI ChatClient
+
 ---
 
-## Project Structure
+# 📂 Project Structure
 
 ```
 policy-management-system
@@ -58,53 +92,79 @@ policy-management-system
 
 ---
 
-## Database Setup
+# 🗄 Database Setup
 
-Create the database in MySQL.
+Create the database:
 
 ```sql
 CREATE DATABASE policy_management_db;
 ```
 
-Update the database credentials in:
+Update:
 
 ```
 backend/src/main/resources/application.properties
 ```
 
-Example:
-
 ```properties
 spring.datasource.url=jdbc:mysql://localhost:3306/policy_management_db
 spring.datasource.username=root
-spring.datasource.password=root
+spring.datasource.password=your_password
 ```
 
 ---
 
-## Running the Backend
+# 🤖 Ollama Setup
 
-Navigate to the backend folder.
+Install Ollama:
+
+https://ollama.com
+
+Download the Llama 3 model:
+
+```bash
+ollama pull llama3
+```
+
+Start Ollama:
+
+```bash
+ollama run llama3
+```
+
+Spring AI Configuration:
+
+```properties
+spring.ai.ollama.base-url=http://localhost:11434
+spring.ai.ollama.chat.options.model=llama3
+spring.ai.ollama.chat.options.temperature=0.3
+```
+
+---
+
+# ▶ Running the Backend
+
+Navigate to the backend folder:
 
 ```bash
 cd backend
 ```
 
-Run the application.
+Run:
 
-Windows:
+Windows
 
 ```powershell
 .\mvnw.cmd spring-boot:run
 ```
 
-Linux/Mac:
+Linux/Mac
 
 ```bash
 ./mvnw spring-boot:run
 ```
 
-Backend URL:
+Backend URL
 
 ```
 http://localhost:8080
@@ -112,27 +172,27 @@ http://localhost:8080
 
 ---
 
-## Running the Frontend
+# ▶ Running the Frontend
 
-Navigate to the frontend folder.
+Navigate to frontend
 
 ```bash
 cd frontend
 ```
 
-Install dependencies.
+Install dependencies
 
 ```bash
 npm install
 ```
 
-Start the development server.
+Start
 
 ```bash
 npm run dev
 ```
 
-Frontend URL:
+Frontend URL
 
 ```
 http://localhost:5173
@@ -140,37 +200,49 @@ http://localhost:5173
 
 ---
 
-## REST API Endpoints
+# 🌐 REST API Endpoints
 
-### Customers
+## Customers
 
-- POST `/api/customers`
-- GET `/api/customers`
-- GET `/api/customers/{id}`
-- PUT `/api/customers/{id}`
-- DELETE `/api/customers/{id}`
+```
+POST   /api/customers
+GET    /api/customers
+GET    /api/customers/{id}
+PUT    /api/customers/{id}
+DELETE /api/customers/{id}
+```
 
-### Policies
+## Policies
 
-- POST `/api/policies`
-- GET `/api/policies`
-- GET `/api/policies/{id}`
-- PUT `/api/policies/{id}`
-- DELETE `/api/policies/{id}`
+```
+POST   /api/policies
+GET    /api/policies
+GET    /api/policies/{id}
+PUT    /api/policies/{id}
+DELETE /api/policies/{id}
+```
 
-### Policy Assignments
+## Policy Assignments
 
-- POST `/api/assignments`
-- GET `/api/assignments`
-- GET `/api/assignments/{id}`
-- PATCH `/api/assignments/{id}/status`
-- DELETE `/api/assignments/{id}`
+```
+POST   /api/assignments
+GET    /api/assignments
+GET    /api/assignments/{id}
+PATCH  /api/assignments/{id}/status
+DELETE /api/assignments/{id}
+```
+
+## AI Chatbot
+
+```
+POST /api/ai/chat
+```
 
 ---
 
-## Sample Request
+# 📋 Sample Requests
 
-### Create Customer
+## Create Customer
 
 ```json
 {
@@ -181,7 +253,7 @@ http://localhost:5173
 }
 ```
 
-### Create Policy
+## Create Policy
 
 ```json
 {
@@ -195,7 +267,7 @@ http://localhost:5173
 }
 ```
 
-### Assign Policy
+## Assign Policy
 
 ```json
 {
@@ -205,20 +277,47 @@ http://localhost:5173
 }
 ```
 
+## AI Chat Request
+
+```
+Which health insurance policy is best for a family?
+```
+
+Example Response
+
+```
+Based on the available policies, I recommend HealthGuard Premium because it offers ₹10,00,000 coverage with affordable annual premium and is suitable for families.
+```
+
 ---
 
-## Future Enhancements
+# 🔮 Future Enhancements
 
-- Authentication & Authorization (JWT)
+- JWT Authentication & Authorization
 - Claims Management
 - Premium Payment Module
-- Dashboard & Reports
+- Policy Renewal Reminder
+- AI Policy Comparison
+- AI Risk Assessment
+- AI Customer Support
+- Dashboard & Analytics
 - Email Notifications
 - Search & Filtering
 - Pagination
+- Document Upload & AI Analysis
 
 ---
 
-## Author
+# 👨‍💻 Author
 
 **Mohammed Musadiq**
+
+AI Powered Full Stack Developer
+
+- Java
+- Spring Boot
+- React
+- MySQL
+- Spring AI
+- Ollama
+- REST APIs
