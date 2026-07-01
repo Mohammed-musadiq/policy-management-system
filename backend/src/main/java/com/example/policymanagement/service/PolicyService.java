@@ -9,6 +9,7 @@ import com.example.policymanagement.repository.PolicyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import com.example.policymanagement.exception.BadRequestException;
 
 import java.util.List;
 
@@ -68,9 +69,17 @@ public class PolicyService {
     }
 
     public void deletePolicy(Long id) {
-        Policy policy = findPolicyById(id);
-        policyRepository.delete(policy);
+
+    Policy policy = findPolicyById(id);
+
+    if (!policy.getAssignments().isEmpty()) {
+        throw new BadRequestException(
+                "Cannot delete policy because it is assigned to one or more customers."
+        );
     }
+
+    policyRepository.delete(policy);
+}
 
     @Transactional(readOnly = true)
     public Policy findPolicyById(Long id) {

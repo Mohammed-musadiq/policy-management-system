@@ -1,0 +1,15 @@
+@Service
+public class AIService {
+
+    private final ChatClient chatClient;
+
+    public AIService(ChatClient.Builder builder) {
+        this.chatClient = builder.build();
+    }
+
+    public String ask(String question) {
+        return chatClient.prompt(question)
+                .call()
+                .content();
+    }
+}

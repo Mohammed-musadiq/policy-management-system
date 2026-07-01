@@ -5,6 +5,7 @@ import CustomerList from './pages/CustomerList.jsx';
 import PolicyForm from './pages/PolicyForm.jsx';
 import PolicyList from './pages/PolicyList.jsx';
 import AssignPolicy from './pages/AssignPolicy.jsx';
+import AIChat from "./pages/AIChat.jsx";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/policies/new" element={<PolicyForm />} />
           <Route path="/policies/:id/edit" element={<PolicyForm />} />
           <Route path="/assign-policy" element={<AssignPolicy />} />
+          <Route path="/ai-chat" element={<AIChat />} />
         </Routes>
       </main>
     </>

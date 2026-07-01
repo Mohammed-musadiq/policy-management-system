@@ -7,6 +7,10 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import java.util.List;
+import java.util.ArrayList;
+import jakarta.persistence.OneToMany;
+
 @Entity
 @Table(name = "policies")
 @Data
@@ -40,6 +44,9 @@ public class Policy {
 
     @Column(length = 500)
     private String description;
+
+    @OneToMany(mappedBy = "policy")
+    private List<PolicyAssignment> assignments = new ArrayList<>();
 
     @Column(nullable = false,updatable = false)
     private LocalDateTime createdAt;
